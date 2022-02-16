@@ -126,6 +126,7 @@ class HttpToolsProtocol(asyncio.Protocol):
         except httptools.HttpParserError as exc:
             msg = "Invalid HTTP request received."
             self.logger.warning(msg, exc_info=exc)
+            self.logger.warning(f"Data received: {msg}")
             self.send_400_response(msg)
             return
         except httptools.HttpParserUpgrade:
