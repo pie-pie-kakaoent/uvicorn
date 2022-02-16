@@ -127,6 +127,8 @@ class HttpToolsProtocol(asyncio.Protocol):
             msg = "Invalid HTTP request received."
             self.logger.warning(msg, exc_info=exc)
             self.logger.warning(f"Data received: {data}")
+            self.logger.warning(f"url: {self.url}")
+            self.logger.warning(f"headers: {self.headers}")
             self.transport.close()
         except httptools.HttpParserUpgrade:
             self.handle_upgrade()
